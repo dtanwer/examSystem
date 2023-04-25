@@ -80,7 +80,7 @@ function ViewQuestion() {
 
 
     async function updateQuestion() {
-        await axios.put(`http://localhost:3002/question/${qId}`, updatedQ);
+        await axios.put(`https://examsystem-api.vercel.app/question/${qId}`, updatedQ);
         alert("question Updated!");
         setCheck(true);
     }
@@ -97,7 +97,7 @@ function ViewQuestion() {
     const [d, setD] = useState();
 
     async function deleteQuestion(id) {
-         await axios.delete(`http://localhost:3002/question/delete/${id}`);
+         await axios.delete(`https://examsystem-api.vercel.app/question/delete/${id}`);
         alert('Question Delete!');
         setD(true);
     }
