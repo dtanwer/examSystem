@@ -39,7 +39,7 @@ function Login() {
             {
 
                 setCookies("access_token",response.data.token);
-                window.localStorage.setItem("userID",response.data.userID);
+                window.localStorage.setItem("userId",response.data.userID);
                 navigate("/student")
             }
           }

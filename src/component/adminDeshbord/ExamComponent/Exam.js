@@ -77,15 +77,6 @@ function Exam() {
 
     const [questions, setQuestions] = useState([]);
 
-    // useEffect(() => {
-    //     async function getAllQuestions() {
-    //         alert("geting all questions");
-    //         //setQuestions(value.data);
-    //     }
-    //     getAllQuestions();
-    // }, [])
-
-
     const [statusDeleteExam, setStatusDeleteExam] = useState();
 
 

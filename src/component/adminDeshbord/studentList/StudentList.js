@@ -41,7 +41,7 @@ function StudentList() {
                                         <td>{data.username}</td>
                                         <td>{data.userEmail}</td>
                                         <td>
-                                        <button>View Result</button>
+                                        <NavLink to={`result/${data._id}`}><button>View Result</button></NavLink>
                                         </td>
                                     </tr>
                                 );

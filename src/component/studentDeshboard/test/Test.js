@@ -1,54 +1,70 @@
 
 
 import axios from "axios";
-
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import "../StudentDashboard.css";
 
 function Test() {
 
     // ---------------------------------------------------------
-    let { examId } = useParams();
-    // let { category } = useParams();
+    const { examId } = useParams();
+    const navigate=useNavigate();
+
 
     const [allQuestions , setAllQuestions] = useState([]);
+    const [exam , setExam] = useState({});
+    const [user , setUser] = useState({});
 
-
+    const keys = new Map([]);
+    const crossCheck = new Map([]);
+    let score = 0;
 
     useEffect(() => {
         async function getAllQuestions(){
             let value = await axios.get(`https://examsystem-api.vercel.app/question/${examId}`);
-            console.log(value.data);
             setAllQuestions(value.data);
         }
+
+        const getUser= async ()=>{
+            const data=await axios.get(`https://examsystem-api.vercel.app/auth/${userId}`);
+            setUser(data.data);
+        }
+        const getExam= async ()=>{
+            const data=await axios.get(`https://examsystem-api.vercel.app/exam/${examId}`);
+            setExam(data.data);
+        }
+        getUser();
+        getExam();
         getAllQuestions();
     },[]);
 
-    // ---------------------------------------------------------
     
-    // const [userAnswer , setUserAnswer] = useState({
-    //     answer1:"",
-    //     answer2:"",
-    //     answer3:"",
-    // });
+    const useGetUserID= ()=>{
+        return window.localStorage.getItem("userId");
+      };
+      
+      
+      const userId=useGetUserID();
 
-    const [answer , setAnswer] = useState({
-        answer1:"",
-        answer2:"",
-        answer3:"",
-        answer4:"",
-        answer5:"",
-    });
+    function onRadioButtonChange(e,i){
 
+        if(keys.get(i)==e.target.value)
+        {
+            crossCheck.set(i,true);
+            score++;
+            console.log(score);
+        }
+        else
+        {
+            if(crossCheck.get(i))
+            {
+                score--;
+                crossCheck.set(i,false);
+                console.log(score);
+            }
 
-    let  correctAnswer  = [] ;
-    
-    function onRadioButtonChange(e){
-       setAnswer({
-            ...answer, 
-            [e.target.name] : e.target.value
-    });
+        }
       
        
     }
@@ -57,56 +73,37 @@ function Test() {
 
     
 
-
     async function submitTest()
     {
-        for(let i=0; i<allQuestions.length ;i++)
-        {
-            correctAnswer.push( allQuestions[i].question_answer);
-        }
-
-
-        // console.log(answer);
-        // console.log(correctAnswer);
-
-        let score = 0;
+        const total_Question=allQuestions.length
+        const scoreInpercent=Math.floor((score/total_Question)*100);
         let status = "";
-
-        
-            if(correctAnswer[0] === answer.answer1) score++;
-            if(correctAnswer[1] === answer.answer2) score++;
-            if(correctAnswer[2] === answer.answer3) score++;
-            if(correctAnswer[3] === answer.answer4) score++;
-            if(correctAnswer[4] === answer.answer5) score++;
-        
-        // console.log(score);
-  
-         if(score >= 3) status="Pass";
+         if(score >= exam.examPassingMarks ) status="Pass";
          else status = "Fail";
 
-        
-
+         
 
         var date = new Date();
         var d =  date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() ;
         var t =  date.getHours() + ":" + date.getMinutes() +  ":" + date.getSeconds() ;
    
        let data={
-         "result_status": status,
-         "result_score": score,
-         "user_email":sessionStorage.getItem("user"),
-         "exam_date": d+" "+t,
-         "exam_name": "category",
-         "total_marks": "5",
-         "exam_id": "id",
-         "total_Question": "5"
+        "resultStatus":status,
+        "resultScore":score,
+        "userId":userId,
+        "examId":examId,
+        "userName":user.username,
+        "userEmail":user.userEmail,
+        "examName":exam.examName,
+        "examDate":d+t
        };
+       console.log(data);
  
-        // await axios.post("http://localhost:3333/result" , data);
-        // history.push("/StudentDashboard/Result");
+        await axios.post("https://examsystem-api.vercel.app/result",data);
+        alert("Exam Submited !!!");
+        navigate('/student/');
+        
     }
-
-    //  let history = useHistory();
 
     return (
         <>
@@ -116,32 +113,32 @@ function Test() {
             {
                  
                 allQuestions.map((data , i) => {
-                    // if(parseInt( data.exam_id ) === parseInt(id)){
                         count++;
+                        keys.set(i,data.answer);
                     return (
                         <div id='displayBoxQuestionBox' key={i}>
                         <div id='divQuestion'> <span>{data.questionName}</span> </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_one}
+                            <input onChange={(e) => onRadioButtonChange(e,i)} value={data.op1}
                             id='option1' name={"answer"+count}   type="radio" />  
                             <label htmlFor="option1">{data.op1}</label>
                         </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_two}
+                            <input  onChange={(e) => onRadioButtonChange(e,i)} value={data.op2}
                             id='option2' name={"answer"+count} type="radio" /> 
                             <label htmlFor="option2">{data.op2}</label>
                         </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_three}
+                            <input   onChange={(e) => onRadioButtonChange(e,i)} value={data.op3}
                             id='option3' name={"answer"+count}  type="radio" /> 
                             <label htmlFor="option3">{data.op3}</label>
                         </div>
         
                         <div>
-                            <input onChange={(e) => onRadioButtonChange(e)} value={data.option_four}
+                            <input   onChange={(e) => onRadioButtonChange(e,i)} value={data.op4}
                             id='option4' name={"answer"+count}  type="radio" /> 
                             <label htmlFor="option4">{data.op4}</label>
                         </div>

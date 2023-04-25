@@ -1,13 +1,12 @@
 
   
   import "../../subject/Subject.css";
-//   import {useParams , useHistory} from "react-router-dom";
   import React, {useState , useEffect} from "react";
-//   import axios from "axios";
+
 
      function Student(){
 
-        //  const {id} = useParams();
+      
 
          const [email , setEmail] = useState("abc@gmail.com");
 
@@ -80,30 +79,12 @@
             }
           ]);
 
-        //  useEffect(() => {
-        //      async function getStudentEmail(){
-        //          //user whose result we have to fetch
-        //         // let value = await axios.get(`http://localhost:3333/user/${id}`);
-        //          setEmail(value.data.user_email);
-                 
-        //      }
-        //      getStudentEmail();
-        //  })
+      
 
 
-        //  useEffect(() => {   
-        //      async function getAllResult(){
-        //         let value = await axios.get("http://localhost:3333/result");
-        //         setResult(value.data);
-        //      }
-        //      getAllResult();
-        // },[])
-
-
-        //  const history = useHistory();
+    
 
         function handleGoBack(){ 
-            // history.push("/AdminDashboard/StudentList");
             alert("go back fun")
         }
 

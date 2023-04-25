@@ -42,9 +42,8 @@ function App() {
           <Route path='exam/viewquestion/:examId' element={<ViewQuestion/>}/>
           <Route path='question' element={<Question/>}/>
           <Route path='result' element={<Result/>}/>
-          <Route path='studentList' element={<StudentList/>}>
-          <Route path='studentList/result' element={<Result/>}/>
-            
+          <Route path='studentList' element={<StudentList/>}/>
+          <Route path='studentList/result/:userId' element={<Result/>}> 
           </Route>
         </Route>
       </Routes>

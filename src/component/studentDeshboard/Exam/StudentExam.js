@@ -29,10 +29,6 @@ function StudentExam() {
                     return (
                         <div id='displayBoxExamBox' key={i}>
                             <div id='div5'> <span>{data.examName}</span> </div>
-                            {/* <div id='div2'> <span>Exam ID: {data.id}</span> </div>
-                            <div id='div2'> <span>Exam Description: {data.exam_desc}</span> </div>
-                            <div id='div3'><span>Pass Marks:{data.exam_passMarks}</span> </div>
-                            <div id='div4'><span>Total Marks:{data.exam_marks}</span></div> */}
                             <div id='div5'>
                               <NavLink exact to={`test/${data._id}`}>
                                  <button>Go to Exam</button>

@@ -1,15 +1,15 @@
 import "./AdminDeshbord.css";
 import pic4 from "../../images/logo.png";
-import Dashboard from "./deshbord/Dashboard";
-import Subject from "./subject/Subject";
-import Exam from "./ExamComponent/Exam";
-import Question from "./question/Question";
-import Result from "./result/Result";
-import StudentList from "./studentList/StudentList";
-import Details from "./ExamComponent/details/Details";
-import ViewQuestion from "./ExamComponent/viewQuestion/ViewQuestion";
-import AddQuestion from "./ExamComponent/addQuestion/Addquestion";
-import Student from "./studentList/student/Student";
+// import Dashboard from "./deshbord/Dashboard";
+// import Subject from "./subject/Subject";
+// import Exam from "./ExamComponent/Exam";
+// import Question from "./question/Question";
+// import Result from "./result/Result";
+// import StudentList from "./studentList/StudentList";
+// import Details from "./ExamComponent/details/Details";
+// import ViewQuestion from "./ExamComponent/viewQuestion/ViewQuestion";
+// import AddQuestion from "./ExamComponent/addQuestion/Addquestion";
+// import Student from "./studentList/student/Student";
 import { NavLink,Outlet} from "react-router-dom";
 
 import { useCookies } from 'react-cookie';

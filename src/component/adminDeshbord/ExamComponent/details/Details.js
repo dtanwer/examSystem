@@ -23,7 +23,6 @@ import axios from "axios";
 
 // -------------------------Go back function---------------------------------------
   
-//    let history = useHistory();
 
  
    function handleGoBack(){

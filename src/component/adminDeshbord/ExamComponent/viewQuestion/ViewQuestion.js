@@ -68,15 +68,11 @@ function ViewQuestion() {
     const [qId, setQId] = useState();
 
 
-    function setDataInInputField(questionId) {
-        setQId(questionId);
+    function setDataInInputField(data) {
+        setQId(data._id);
+        setUpdatedQ(data);
+        console.log(updatedQ);
 
-        //    for(let i=0; i<questions.length ; i++)
-        //    {
-        //        if( parseInt( questions[i].id) === parseInt( questionId )) {
-        //            setUpdatedQ(questions[i]);
-        //        }
-        //    }
     }
     // -----------------------------------------------------------------------------------------
 
@@ -84,8 +80,8 @@ function ViewQuestion() {
 
 
     async function updateQuestion() {
-        // await axios.put(`http://localhost:3333/question/${qId}` , updatedQ);
-        //update question api
+        await axios.put(`http://localhost:3002/question/${qId}`, updatedQ);
+        alert("question Updated!");
         setCheck(true);
     }
 
@@ -101,8 +97,8 @@ function ViewQuestion() {
     const [d, setD] = useState();
 
     async function deleteQuestion(id) {
-        //    await axios.delete(`http://localhost:3333/question/${id}`);
-        alert('delete function');
+         await axios.delete(`http://localhost:3002/question/delete/${id}`);
+        alert('Question Delete!');
         setD(true);
     }
 
@@ -135,7 +131,6 @@ function ViewQuestion() {
                     <tbody>
                         {
                             questions.map((data, i) => {
-                                //first check question blong to exam or not exam id in question 
                                 return (
                                     <tr key={i}>
                                         <td>{data.questionName}</td>
@@ -145,7 +140,7 @@ function ViewQuestion() {
                                         <td>{data.op4}</td>
                                         <td>{data.answer}</td>
                                         <td>
-                                            <button onClick={() => handleEditQuestion(data._id)}>Edit</button>
+                                            <button onClick={() => handleEditQuestion(data)}>Edit</button>
                                             <button onClick={() => deleteQuestion(data._id)}>Delete</button>
                                         </td>
                                     </tr>
@@ -167,45 +162,45 @@ function ViewQuestion() {
             <div id='addBox' style={display}>
 
                 <label>Enter Question </label>
-                <input value={updatedQ.question_name}
+                <input value={updatedQ.questionName}
                     onChange={(e) => onTextFieldChange(e)}
-                    name="question_name"
+                    name="questionName"
                     type="text" placeholder="Enter Question " />
 
                 <label >Enter Option A </label>
-                <input value={updatedQ.option_one}
+                <input value={updatedQ.op1}
                     onChange={(e) => onTextFieldChange(e)}
-                    name="option_one"
+                    name="op1"
                     type="text" placeholder="Enter Option A" />
 
                 <label >Enter Option B </label>
-                <input value={updatedQ.option_two}
+                <input value={updatedQ.op2}
                     onChange={(e) => onTextFieldChange(e)}
-                    name="option_two"
+                    name="op2"
                     type="text" placeholder="Enter Option B" />
 
                 <label >Enter Option C </label>
-                <input value={updatedQ.option_three}
+                <input value={updatedQ.op3}
                     onChange={(e) => onTextFieldChange(e)}
-                    name="option_three"
+                    name="op3"
                     type="text" placeholder="Enter Option C" />
 
                 <label >Enter Option D </label>
-                <input value={updatedQ.option_four}
+                <input value={updatedQ.op4}
                     onChange={(e) => onTextFieldChange(e)}
-                    name="option_four"
+                    name="op4"
                     type="text" placeholder="Enter Option D" />
 
                 <label >Enter Question Answer </label>
-                <input value={updatedQ.question_answer}
+                <input value={updatedQ.answer}
                     onChange={(e) => onTextFieldChange(e)}
-                    name="question_answer"
+                    name="answer"
                     type="text" placeholder="Enter Answer" />
 
                 <label >Enter Subject </label>
-                <input value={updatedQ.subject_name}
+                <input value={updatedQ.subject}
                     onChange={(e) => onTextFieldChange(e)}
-                    name="subject_name"
+                    name="subject"
                     type="text" placeholder="Enter Subject" />
 
                 <div id='buttonBox'>

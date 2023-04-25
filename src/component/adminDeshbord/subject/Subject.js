@@ -2,6 +2,8 @@ import "./Subject.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -20,9 +22,15 @@ function Subject() {
         setDisplay({ display: "none" });
     }
 
+    const notify = ()=>{
+ 
+        toast('Subject Delected!');
+    }
+
     // --------------- Fetching all subjects from db.json file-------------------------
 
     const [subjects, setSubjects] = useState([]);
+
 
     useEffect(() => {
 
@@ -48,6 +56,7 @@ function Subject() {
 
     async function handleAddNewSubject() {
         const res=await axios.post('http://localhost:3002/subject/add',subject);
+        alert("New Subject Added!");
         console.log(res);
         setStatus(true);
     }
@@ -60,7 +69,11 @@ function Subject() {
 
     async function deleteSubject(id) {
         await axios.delete(`http://localhost:3002/subject/delete/${id}`);
-        setStatusDelete(true);
+        notify();
+        setTimeout(() => {
+            setStatusDelete(true);
+        }, 3000);
+        
     }
 
     const [statusDelete, setStatusDelete] = useState();
@@ -104,9 +117,9 @@ function Subject() {
         <>
 
             <div id='content'>
-
                 <div id='displayHeadingBox'>
                     <h2>Subject List</h2>
+                    <ToastContainer />
                 </div>
 
                 <div id='tableBox'>
