@@ -32,7 +32,7 @@
         return (
             <>
                <div id='displayHeadingBox'> 
-                   <h2>Result List {results[0]?.userName}</h2>     
+                   {userId?(<h2>Result List {results[0]?.userName}</h2>):(<h2>Result List</h2>)}   
                 </div>
 
                 <div id='tableBox'>
