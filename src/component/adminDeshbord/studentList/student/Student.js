@@ -1,7 +1,7 @@
 
   
   import "../../subject/Subject.css";
-  import React, {useState , useEffect} from "react";
+  import React, {useState} from "react";
 
 
      function Student(){
@@ -120,8 +120,6 @@
                                               <td>{data.total_marks}</td>
                                           </tr>
                                     );
-
-                                    return <React.Fragment key={i}></React.Fragment>;
                                 })
                             }
                                

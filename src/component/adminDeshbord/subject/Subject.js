@@ -55,7 +55,7 @@ function Subject() {
 
 
     async function handleAddNewSubject() {
-        const res=await axios.post('http://localhost:3002/subject/add',subject);
+        const res=await axios.post('https://examsystem-api.vercel.app/subject/add',subject);
         alert("New Subject Added!");
         console.log(res);
         setStatus(true);

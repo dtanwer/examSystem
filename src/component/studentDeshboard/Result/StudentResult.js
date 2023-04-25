@@ -23,7 +23,7 @@ console.log(userId);
          setResults(value.data);
      }
          getAllResults();
-  },[]);
+  },[userId]);
 
 
  return (
@@ -57,7 +57,6 @@ console.log(userId);
                               </tr>
                                  );
 
-                                 return <React.Fragment key={i}></React.Fragment>
                              })
                          }
 

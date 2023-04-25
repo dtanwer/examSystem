@@ -20,6 +20,13 @@ function Test() {
     const crossCheck = new Map([]);
     let score = 0;
 
+    const useGetUserID= ()=>{
+        return window.localStorage.getItem("userId");
+      };
+      
+      
+      const userId=useGetUserID();
+
     useEffect(() => {
         async function getAllQuestions(){
             let value = await axios.get(`https://examsystem-api.vercel.app/question/${examId}`);
@@ -37,19 +44,11 @@ function Test() {
         getUser();
         getExam();
         getAllQuestions();
-    },[]);
-
-    
-    const useGetUserID= ()=>{
-        return window.localStorage.getItem("userId");
-      };
-      
-      
-      const userId=useGetUserID();
+    },[examId,userId]);
 
     function onRadioButtonChange(e,i){
 
-        if(keys.get(i)==e.target.value)
+        if(keys.get(i)===e.target.value)
         {
             crossCheck.set(i,true);
             score++;
@@ -75,8 +74,8 @@ function Test() {
 
     async function submitTest()
     {
-        const total_Question=allQuestions.length
-        const scoreInpercent=Math.floor((score/total_Question)*100);
+        // const total_Question=allQuestions.length
+        // const scoreInpercent=Math.floor((score/total_Question)*100);
         let status = "";
          if(score >= exam.examPassingMarks ) status="Pass";
          else status = "Fail";
@@ -144,8 +143,6 @@ function Test() {
                         </div>
                     </div>
                     );
-                //   }
-                  return <React.Fragment key={i}></React.Fragment>
                 })
             }
             <div id='submitExam'><button onClick={submitTest}>Submit Exam</button></div>
