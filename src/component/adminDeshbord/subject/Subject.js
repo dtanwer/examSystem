@@ -68,7 +68,7 @@ function Subject() {
     // ------------------------Deleting Subject and reload component------------------------------
 
     async function deleteSubject(id) {
-        await axios.delete(`http://localhost:3002/subject/delete/${id}`);
+        await axios.delete(`https://examsystem-api.vercel.app/subject/delete/${id}`);
         notify();
         setTimeout(() => {
             setStatusDelete(true);
