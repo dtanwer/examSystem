@@ -13,6 +13,7 @@ function StudentList() {
         async function getAllStudent() {
             let value = await axios.get("https://examsystem-api.vercel.app/auth");
             //fatch all student 
+            
             setStudents(value.data);
         }
         getAllStudent();

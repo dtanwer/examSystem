@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import AdminDashboard from './component/adminDeshbord/AdminDeshboard';
 import AdminLogin from './component/adminLogin/AdminLogin';
-import Home from './component/home/Home';
+import Home from './home/Home';
 import Login from './component/login/Login';
 import Signup from './component/signup/Signup';
 import Dashboard from './component/adminDeshbord/deshbord/Dashboard';

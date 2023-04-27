@@ -34,6 +34,7 @@ function AddQuestion() {
     async function addnewQuestion() {
         const res=await axios.post("https://examsystem-api.vercel.app/question/add", question);
         console.log(res.data);
+        alert("Question Added!!");
     }
 
 

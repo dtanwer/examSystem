@@ -4,7 +4,7 @@ body{
 }
 
  
- #header{
+ #myheader{
       /* background-color: #2e6da4dc; */
       background-color: rgba(0, 0, 0, 0.9);
       
@@ -19,7 +19,7 @@ body{
 
 /* --------------------------------------------------------- */
 
-   #headerHeadingBox{
+   #myheaderHeadingBox{
       /* background-color: cyan; */
       float: left;
       height: 50px;
@@ -32,7 +32,7 @@ body{
 
 
      
-   #headerHeadingBox h3{
+   #myheaderHeadingBox h3{
      margin: 0px;
      padding-top: 10px;
      padding-left: 10px;
@@ -43,7 +43,7 @@ body{
 
 
 
-    #div1{
+    #mydiv1{
           /* background-color: yellow; */
           float: left;
           height: 150px;
@@ -59,18 +59,18 @@ body{
     }
 
 
-    #div1 img{
+    #mydiv1 img{
         height: 110px;
         width: 150px;
     }
 
-    #div1 span{
+    #mydiv1 span{
       display: block;
       font-size: x-large;
    }
 
 
-   #div2{
+   #mydiv2{
         /* background-color: yellow; */
          float: left;
           height: 300px;
@@ -86,7 +86,7 @@ body{
     }
 
 
-    .div3{
+    .mydiv3{
         float: left;
         height: 300px;
         width: 455px;
@@ -95,7 +95,7 @@ body{
         text-align: center;
     }
 
-    .div3 img{
+    .mydiv3 img{
        height: 250px;
        width: 300px;
        margin-top: 20px;
@@ -103,13 +103,13 @@ body{
     }
 
 
-    .div3 span{
+    .mydiv3 span{
        display: block;
        font-size: x-large;
     }
 
 
-    .div3 a{
+    .mydiv3 a{
         color: black;
         text-decoration: none;
     }
