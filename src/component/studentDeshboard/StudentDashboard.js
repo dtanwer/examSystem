@@ -1,56 +1,53 @@
 
-import { NavLink ,Outlet,useNavigate} from "react-router-dom";
-import {useCookies} from 'react-cookie'
-import './StudentDashboard.css';
-import { useEffect } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie'
+import style from './StudentDashboard.module.css';
+import { useEffect, useState } from "react";
+import pic1 from '../../images/1.png'
 
 
 
 
-   function StudentDashboard(){
+function StudentDashboard() {
 
-    const [cookies, setCookies] = useCookies(["access_token"]);
-    const navigate = useNavigate();
-    
-    //  useEffect( () => {
-    //         //  if(sessionStorage.getItem("user") == null){
-    //         //      alert("Detect Illegal Way of Entering");
-    //         //     //  history.push("/StudentLogin");
-    //         //  }
-    //  })
+  const [, setCookies] = useCookies(["access_token"]);
+  const navigate = useNavigate();
+  const [doingExam,setDoingExam]=useState(false);
+
+   useEffect( () => {
+           if(window.localStorage.getItem("userID") == null){
+               navigate('/');
+           }
+   })
 
 
 
-      function logout(){
-        setCookies("access_token", "");
-        window.localStorage.removeItem("userID");
-        alert("moving to login page");
-        navigate('/login');
-      }
-     
+  function logout() {
+    setCookies("access_token", "");
+    window.localStorage.removeItem("userID");
+    alert("moving to login page");
+    navigate('/');
+  }
 
-      
-       return (
-           <>
-              <div id='header'>
-             
-                   <div id='headerHeadingBox'>
-                       <h3>Online Exam System</h3> 
-                   </div>
 
-                     <div id='headerMenuBox'>
-                         <NavLink exact to=""> <span>Subject</span> </NavLink>
-                         <NavLink exact to="result"> <span>My Result</span></NavLink>
-                         <NavLink onClick={logout} exact to="/login"> <span>Logout</span> </NavLink>
-                    </div>
 
-                </div>
+  return (
+    <div className={style.dashboard}>
+      <div className={style.navBar}>
+        <div className={style.navHeading}><h3>Deep |  <img src={pic1} className={style.icon} alt="icon" /> ExamSystem </h3></div>
+       {
+        doingExam===false? ( <div className={style.link}>
+          <NavLink  to=""> <span>Subject</span> </NavLink>
+          <NavLink to="result"> <span>My Result</span></NavLink>
+          <NavLink onClick={logout} to="/"> <span>Logout</span> </NavLink>
+        </div>):("")
+       }
+      </div>
+      <div className={style.Dashcmp}>
+        <Outlet />
+      </div>
+    </div>
+  );
+}
 
-               <div id='displayBox'>
-                <Outlet/>
-                </div>
-           </>
-       );
-   }
-
-   export default StudentDashboard;
+export default StudentDashboard;

@@ -10,23 +10,31 @@ import pic4 from "../../images/logo.png";
 // import ViewQuestion from "./ExamComponent/viewQuestion/ViewQuestion";
 // import AddQuestion from "./ExamComponent/addQuestion/Addquestion";
 // import Student from "./studentList/student/Student";
-import { NavLink,Outlet} from "react-router-dom";
 
+
+import { useEffect } from "react";
 import { useCookies } from 'react-cookie';
-import { useNavigate } from 'react-router-dom';
+import { NavLink,Outlet,useNavigate } from 'react-router-dom';
 
 
 
 function AdminDashboard() {
 
-    const [cookies, setCookies] = useCookies(["access_token"]);
+    const [, setCookies] = useCookies(["access_token"]);
     const navigate = useNavigate();
 
     function goToAdminLogin() {
         setCookies("access_token", "");
-        window.localStorage.removeItem("userID");
-        navigate('/adminlogin');
+        window.localStorage.removeItem("adminID");
+        navigate('/');
     }
+
+    useEffect( () => {
+        if(window.localStorage.getItem("adminID") == null){
+            navigate('/');
+        }
+})
+
 
 
     return (
@@ -38,7 +46,8 @@ function AdminDashboard() {
 
                 <div id='headerMenuBox'>
                     <NavLink to='' > <span> Dashboard</span> </NavLink>
-                    <a> <span onClick={goToAdminLogin}> Logout</span></a>
+                    <NavLink to='' > <span onClick={goToAdminLogin}> Logout</span> </NavLink>
+                     
                 </div>
             </div>
 

@@ -1,0 +1,73 @@
+
+.mainTest{
+  /* text-align: center; */
+  height: 100vh;
+}
+
+.heading h3{
+  color: #17145E;
+    margin: 30px;
+    background-color: rgba(255, 255, 255, 0.332);
+    border-radius: 4px;
+    text-align: center;
+    width: fit-content;
+    padding: 5px 20px;
+}
+
+    
+ 
+  .qCard{
+    margin: 20px;
+    display:flex;
+    justify-content: center;
+
+  }
+
+  .questionBox{
+    background-color: rgba(255, 255, 255, 0.689);
+    margin: 2rem 5rem;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .divQuestion
+  {
+    font-weight: bold;
+  }
+
+  .option{
+    margin: 5px;
+  }
+  .option label{
+    padding: 5px;
+  }
+
+  .option label:hover{
+    font-weight: bold;
+  }
+
+  .submitExam button{
+    
+    margin: 20px;
+    font-size: 17px;
+    color:#fff;
+    background-color:red;
+    height: 35px;
+    border-radius: 7px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: none;
+      
+   }
+
+   .submitExam{
+    display: flex;
+    justify-content: flex-end;
+   }
+
+  
+
+
+
+
+

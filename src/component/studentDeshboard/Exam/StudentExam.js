@@ -2,9 +2,8 @@
 
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import {NavLink } from "react-router-dom";
-
- import "../StudentDashboard.css";
+import { NavLink } from "react-router-dom";
+import style from "./StudentExam.module.css";
 
 function StudentExam() {
 
@@ -13,35 +12,41 @@ function StudentExam() {
     useEffect(() => {
         async function getAllExams() {
             let value = await axios.get("https://examsystem-api.vercel.app/exam");
-            console.log(value.data);
             setAllExam(value.data);
         }
         getAllExams();
     }, [])
 
     return (
-        <>
-            <div id='displayBoxHeadingBox'>
-                <h1>All category Exam</h1>
-            </div>
-            {
-                allExam.map((data, i) => {
-                    return (
-                        <div id='displayBoxExamBox' key={i}>
-                            <div id='div5'> <span>{data.examName}</span> </div>
-                            <div id='div5'>
-                              <NavLink exact to={`test/${data._id}`}>
-                                 <button>Go to Exam</button>
-                               </NavLink>
+        <div className={style.mainExamDiv}>
+            
+            <h1> <span>All</span>Tests</h1>
+            <div className={style.exam}>
+                {
+                    allExam.map((data, i) => {
+                        return (
+                            <div className={style.box} key={i}>
+                                <div className={style.examName}> <h3>{data.examName}</h3> </div>
+                                <div className={style.list}>
+
+                                    <p>Exam Level: {data.examLevel}</p>
+                                    <p>Total Question: {data.examTotalQuestion}</p>
+                                    <p>Total Marks: {data.examMarks}</p>
+                                    <p>Total Marks: {data.examMarks}</p>
+                                </div>
+                                <div className={style.exambtn}>
+                                    <NavLink  to={`test/${data._id}`}>
+                                        <button  className={style.button32}>Go to Exam</button>
+                                    </NavLink>
+                                </div>
                             </div>
-                        </div>
-                    );
 
-                    return <React.Fragment key={i}></React.Fragment>
+                        );
 
-                })
-            }
-        </>
+                    })
+                }
+            </div>
+        </div>
     );
 }
 export default StudentExam;

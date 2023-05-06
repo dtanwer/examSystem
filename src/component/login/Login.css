@@ -107,29 +107,8 @@ body{
 
  }
 
-/* ----------------------------------------------------------------------*/
-
-/* #signup{
-    margin-top: 20px;
-    font-size: 16px;
-    text-align: center;
+.loading{
+    display: grid;
+    place-items: center;
+    height: 100vh;
 }
-
-
- #signup a{
-     text-decoration: none;
-     color: black;
- }
-
- 
- #signup a:hover{
-     text-decoration: underline;
-     color: black;
-
- }
-
- #goBackLink{
-     margin-top: 10px;
-     color: black;
-     display: block;
- }  */
