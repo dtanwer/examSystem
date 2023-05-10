@@ -25,9 +25,9 @@ function StudentResult() {
 
                 <h1> <span>My</span>Result</h1>
             <div className={style.tableBox}>
-                <table > 
+                <table className={style.restable} > 
                     <thead>
-                        <tr>
+                        <tr className={style.resHad}>
                              <th className={style.center}>User Email</th>
                              <th className={style.center}>User Name</th>
                              <th className={style.center}>Exam Name</th>
@@ -42,7 +42,7 @@ function StudentResult() {
                         {
                             results.map((data, i) => {
                                 return (
-                                    <tr key={i}>
+                                    <tr key={i} className={style.resbody}>
                                         <td>{data.userEmail}</td>
                                         <td>{data.userName}</td>
                                         <td>{data.examName}</td>

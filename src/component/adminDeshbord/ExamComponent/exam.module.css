@@ -1,0 +1,49 @@
+.mainExam{
+    /* background-color: red; */
+}
+
+#addBox button {
+    margin-top: 10px; 
+    height: 30px;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: .25rem;
+    cursor: pointer;
+    margin-left: 10px;
+    min-width: 50px;
+}
+
+#addBox button:hover{
+  background-color: #0c4d1b;
+}
+
+
+
+#addBox input{
+margin-top: 20px;
+width: 800px;
+height: 25px;
+padding: 6px 12px;
+font-size: 16px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+
+#addBox label{
+display: inline-block;
+margin-right: 40px;
+font-size: 18px;
+
+}
+
+
+
+.addQuestion{
+ margin-top:0px !important;   
+}

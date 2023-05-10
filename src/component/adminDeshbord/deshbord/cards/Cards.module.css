@@ -1,0 +1,61 @@
+.widget {
+    color:#17145E;
+    padding: 10px;
+    border-radius: 10px;
+    height: 150px;
+    min-width: 250px;
+    background-color: rgba(255, 255, 255, 0.198);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+    text-decoration:none;
+}
+
+.widget:hover {
+    background-color: rgba(255, 255, 255, 0.52);
+}
+
+.counter{
+    margin: 0;
+    margin-top: 2rem;
+}
+.counter span {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.top p{
+    margin: 0;
+    text-align: end;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.title {
+    font-size: 10px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.icon {
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 5px;
+    align-self: flex-end;
+}
+
+.myicon{
+    width: 122px;
+    height: 110px;
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 10px;
+}

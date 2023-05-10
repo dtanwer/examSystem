@@ -1,8 +1,8 @@
  
-   import  "../subject/Subject.css";
    import {useEffect , useState} from "react";
    import axios from 'axios';
    import { useParams } from "react-router-dom";
+   import style from '../ExamComponent/table.module.css'
 
    
    
@@ -31,27 +31,27 @@
         },[]);
         return (
             <>
-               <div id='displayHeadingBox'> 
-                   {userId?(<h2>Result List {results[0]?.userName}</h2>):(<h2>Result List</h2>)}   
+               <div className={style.mainHead}> 
+                   {userId?(<h1> {results[0]?.userName} Result <span> List</span></h1>):(<h1>Result <span>List</span></h1>)}   
                 </div>
 
                 <div id='tableBox'>
-                    <table>
+                    <table className={style.examtb}>
                        <thead>
-                           <tr>
-                             <th id="center">User Email</th>
-                             <th id="center">User Name</th>
-                             <th id="center">Exam Name</th>
-                             <th id="center">Exam Date</th>
-                             <th id="center">Your Score</th>  
-                             <th id="center">Result Status</th>
+                           <tr  className={style.tbhad}>
+                             <th >User Email</th>
+                             <th >User Name</th>
+                             <th >Exam Name</th>
+                             <th >Exam Date</th>
+                             <th >Your Score</th>  
+                             <th >Result Status</th>
                           </tr>
                         </thead>
                         <tbody>
                             {
                                 results.map((data , i) => {
                                     return(
-                                          <tr key={i}>
+                                          <tr key={i} className={style.tbody}>
                                               <td>{data.userEmail}</td>
                                               <td>{data.userName}</td>
                                               <td>{data.examName}</td>

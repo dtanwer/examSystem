@@ -1,5 +1,5 @@
-import "../subject/Subject.css";
 import axios from "axios";
+import style from '../ExamComponent/table.module.css';
 
 
 import { useEffect, useState } from "react";
@@ -21,28 +21,26 @@ function Question() {
 
     return (
         <>
-            <div id='displayHeadingBox'>
-                <h2>Question List</h2>
+            <div className={style.mainHead}>
+                <h1>Question <span>List</span></h1>
             </div>
-
-            <div id='tableBox'>
-                <table>
+            <table className={style.examtb}>
                     <thead>
-                        <tr>
-                            <th id='center'>Question Name</th>
-                            <th id='center'>Option one</th>
-                            <th id='center'>Option two</th>
-                            <th id='center'>Option three</th>
-                            <th id='center'>Option Four</th>
-                            <th id='center'>Question Answer</th>
-                            <th id='center'>Subject Name</th>
+                        <tr className={style.tbhad}>
+                            <th >Question Name</th>
+                            <th>Option one</th>
+                            <th>Option two</th>
+                            <th>Option three</th>
+                            <th>Option Four</th>
+                            <th>Question Answer</th>
+                            <th>Subject Name</th>
                         </tr>
                     </thead>
-                    <tbody id='tbody'>
+                    <tbody>
                         {
                             questions.map((data, i) => {
                                 return (
-                                    <tr key={i}>
+                                    <tr key={i} className={style.tbody}>
                                         <td>{data.questionName}</td>
                                         <td>{data.op1}</td>
                                         <td>{data.op2}</td>
@@ -57,7 +55,6 @@ function Question() {
 
                     </tbody>
                 </table>
-            </div>
         </>
     );
 }

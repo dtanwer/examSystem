@@ -28,18 +28,19 @@ h1 span {
     padding: 1rem;
 }
 
-table {
+.restable {
     width: 80%;
     margin: auto auto;
     border-radius: 20px;
-
 }
 
-th, td {
+.resHad th,.resbody td {
     padding: 15px;
     text-align: left;
     border: 2px solid white;
 }
+
+
 th{
     background-color: white;
     color: #17145E;

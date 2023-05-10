@@ -1,8 +1,8 @@
-import "../../subject/Subject.css";
 
 import {useEffect , useState} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
+import style from '../table.module.css';
 
  
  function Details(){
@@ -32,54 +32,51 @@ import axios from "axios";
 
      return (
          <>
-             <div id='displayHeadingBox'> 
-                  <h2>Exam Details</h2>     
+             <div className={style.mainHead}> 
+                  <h1>Exam <span>Details</span></h1>     
               </div>
 
-              <div id='tableBox'>
-                  <table >
+              <table className={style.examtb}>
                       <thead >
-                           <tr>
-                             <th id='center'>Exam Name</th>
-                             <td id='center'> {exam.examName} </td>
+                           <tr className={style.tbody}>
+                             <th>Exam Name</th>
+                             <td> {exam.examName} </td>
                           </tr>
 
-                           <tr>
+                           <tr className={style.tbody}>
                              <th id='center'>Exam Description</th>
                              <td id='center'> {exam.examDes} </td>
                            </tr>
 
-                            <tr>
+                            <tr className={style.tbody}>
                                <th id='center'>Exam Creation Date</th>
                                <td id='center'> {exam.examDate} </td>
                             </tr>
 
-                            <tr>
+                            <tr className={style.tbody}>
                                <th id='center'>Exam TotalMarks</th>
                                <td id='center'> {exam.examMarks} </td>
                             </tr>
 
-                            <tr>
+                            <tr className={style.tbody}>
                                <th id='center'>Exam TotalQuestion</th>
                                <td id='center'> {exam.examTotalQuestion} </td>
                             </tr>
 
-                            <tr>
+                            <tr className={style.tbody}>
                                <th id='center'>Exam PassMarks</th>
                                <td id='center'> {exam.examPassingMarks} </td>
                             </tr>
 
-                            <tr>
+                            <tr className={style.tbody}>
                                <th id='center'>Exam Level</th>
                                <td id='center'> {exam.examLevel} </td>
                             </tr>
                          </thead>
                       </table>
-                  </div>
-
-                 <div id='addSubjectBox'>
+                 {/* <div id='addSubjectBox'>
                     <button onClick={handleGoBack}>Go Back</button>
-                </div>
+                </div> */}
          </>
      );
  }

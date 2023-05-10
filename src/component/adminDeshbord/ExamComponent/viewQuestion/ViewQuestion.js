@@ -1,6 +1,7 @@
-import "../../subject/Subject.css";
+
 import React, { useState, useEffect } from "react";
 import { useParams} from "react-router-dom";
+import style from '../table.module.css';
 
 import axios from "axios";
 
@@ -87,7 +88,6 @@ function ViewQuestion() {
 
     // ----------------------------------------------------------------------------------------
 
-    // let history = useHistory();
 
     function handleGoBack() {
         alert("go back function");
@@ -111,28 +111,26 @@ function ViewQuestion() {
 
     return (
         <>
-            <div id='displayHeadingBox'>
-                <h2>Question List</h2>
+            <div className={style.mainHead}>
+                <h1>Question <span>List</span></h1>
             </div>
-
-            <div id='tableBox'>
-                <table>
+            <table className={style.examtb}>
                     <thead >
-                        <tr>
-                            <th id='center'>Question Name</th>
-                            <th id='center'>Option one</th>
-                            <th id='center'>Option two</th>
-                            <th id='center'>Option three</th>
-                            <th id='center'>Option four</th>
-                            <th id='center'>Question Answer</th>
-                            <th id='center'>Options</th>
+                        <tr className={style.tbhad}>
+                            <th >Question Name</th>
+                            <th >Option one</th>
+                            <th >Option two</th>
+                            <th>Option three</th>
+                            <th>Option four</th>
+                            <th>Question Answer</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             questions.map((data, i) => {
                                 return (
-                                    <tr key={i}>
+                                    <tr key={i} className={style.tbody}>
                                         <td>{data.questionName}</td>
                                         <td>{data.op1}</td>
                                         <td>{data.op2}</td>
@@ -140,26 +138,24 @@ function ViewQuestion() {
                                         <td>{data.op4}</td>
                                         <td>{data.answer}</td>
                                         <td>
-                                            <button onClick={() => handleEditQuestion(data)}>Edit</button>
-                                            <button onClick={() => deleteQuestion(data._id)}>Delete</button>
+                                            <button className="mybtn viewBtn" onClick={() => handleEditQuestion(data)}>Edit</button>
+                                            <button onClick={() => deleteQuestion(data._id)} className="closeBtn">Delete</button>
                                         </td>
                                     </tr>
                                 );
 
-                                return <React.Fragment key={i}></React.Fragment>
                             })
                         }
 
                     </tbody>
                 </table>
-            </div>
 
-            <div id='addSubjectBox'>
+            {/* <div id='addSubjectBox'>
                 <button onClick={handleGoBack}>Go Back</button>
-            </div>
+            </div> */}
 
 
-            <div id='addBox' style={display}>
+            <div className='addExam' style={display}>
 
                 <label>Enter Question </label>
                 <input value={updatedQ.questionName}
@@ -204,8 +200,8 @@ function ViewQuestion() {
                     type="text" placeholder="Enter Subject" />
 
                 <div id='buttonBox'>
-                    <button onClick={updateQuestion} >Update Question</button>
-                    <button onClick={handleClose} >Close</button>
+                    <button onClick={updateQuestion} className="addBtn" >Update Question</button>
+                    <button onClick={handleClose} className="closeBtn" >Close</button>
                 </div>
             </div>
         </>

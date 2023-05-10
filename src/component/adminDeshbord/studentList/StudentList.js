@@ -1,8 +1,7 @@
-import "../subject/Subject.css";
 import { useState, useEffect } from "react";
-
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import style from '../ExamComponent/table.module.css';
 
 
 function StudentList() {
@@ -21,14 +20,12 @@ function StudentList() {
 
     return (
         <>
-            <div id='displayHeadingBox'>
-                <h2>Student List</h2>
+            <div className={style.mainHead}>
+                <h1>Student <span>List</span></h1>
             </div>
-
-            <div id='tableBox'>
-                <table>
+            <table className={style.examtb}>
                     <thead>
-                        <tr>
+                        <tr className={style.tbhad} >
                             <th id='center'>User Name</th>
                             <th id='center'>User Email</th>
                             <th id='center'>Options</th>
@@ -38,11 +35,11 @@ function StudentList() {
                         {
                             students.map((data, i) => {
                                 return (
-                                    <tr key={i}>
+                                    <tr key={i} className={style.tbody}>
                                         <td>{data.username}</td>
                                         <td>{data.userEmail}</td>
                                         <td>
-                                        <NavLink to={`result/${data._id}`}><button>View Result</button></NavLink>
+                                        <NavLink to={`result/${data._id}`} ><button className='mybtn viewBtn'>View Result</button></NavLink>
                                         </td>
                                     </tr>
                                 );
@@ -51,7 +48,6 @@ function StudentList() {
 
                     </tbody>
                 </table>
-            </div>
         </>
     );
 }

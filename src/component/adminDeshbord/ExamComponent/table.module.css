@@ -1,0 +1,25 @@
+.examtb{
+    border: none;
+    width: 99%;
+    text-align: center;
+}
+.tbody td ,.tbhad td{
+    font-size: medium;
+    padding: 10px;
+}
+
+.mainHead h1{
+    color:#17145E;
+    margin: 30px;
+    background-color: rgba(255, 255, 255, 0.332);
+    border-radius: 4px;
+    text-align: center;
+    width: fit-content;
+    padding: 5px 20px;
+
+}
+
+h1 span{
+    font-size: small;
+}
+

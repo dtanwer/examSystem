@@ -1,9 +1,9 @@
-import "./Subject.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import style from '../ExamComponent/table.module.css'
+import '../Mystyle.css';
 
 
 
@@ -14,16 +14,16 @@ function Subject() {
         display: "none"
     });
 
-   const handleAddSubject=()=> {
+    const handleAddSubject = () => {
         setDisplay({ display: "block" });
     }
 
-    const handleCloseAdd= ()=> {
+    const handleCloseAdd = () => {
         setDisplay({ display: "none" });
     }
 
-    const notify = ()=>{
- 
+    const notify = () => {
+
         toast('Subject Delected!');
     }
 
@@ -55,7 +55,7 @@ function Subject() {
 
 
     async function handleAddNewSubject() {
-        const res=await axios.post('https://examsystem-api.vercel.app/subject/add',subject);
+        const res = await axios.post('https://examsystem-api.vercel.app/subject/add', subject);
         alert("New Subject Added!");
         console.log(res);
         setStatus(true);
@@ -73,7 +73,7 @@ function Subject() {
         setTimeout(() => {
             setStatusDelete(true);
         }, 3000);
-        
+
     }
 
     const [statusDelete, setStatusDelete] = useState();
@@ -89,12 +89,12 @@ function Subject() {
         <>
             <div id='content'>
 
-                <div id='displayHeadingBox'>
-                    <h2>No Subject Available</h2>
+                <div className={style.mainHead}>
+                    <h1>No Subject <span>Available</span> </h1>
                 </div>
 
                 <div id='addSubjectBox'>
-                    <button onClick={handleAddSubject}>Add Subject</button>
+                    <button  className="addBtn" onClick={handleAddSubject}>Add Subject</button>
                 </div>
 
                 {/* Add Subject */}
@@ -117,26 +117,26 @@ function Subject() {
         <>
 
             <div id='content'>
-                <div id='displayHeadingBox'>
-                    <h2>Subject List</h2>
+                <div className={style.mainHead}>
+                    <h1>Subject <span>List</span> </h1>
                     <ToastContainer />
                 </div>
 
                 <div id='tableBox'>
-                    <table >
+                    <table className={style.examtb}>
                         <thead>
-                            <tr>
-                                <th id='center'>Subject Name</th>
-                                <th id='center'>Options</th>
+                            <tr className={style.tbhad}>
+                                <th >Subject Name</th>
+                                <th >Options</th>
                             </tr>
                         </thead>
                         <tbody id='tbody'>
                             {
                                 subjects.map((data, i) => {
                                     return (
-                                        <tr key={i}>
+                                        <tr key={i} className={style.tbody}>
                                             <td>{data.subject}</td>
-                                            <td><button onClick={() => deleteSubject(data._id)}>Delete</button></td>
+                                            <td><button onClick={() => deleteSubject(data._id)} className="closeBtn">Delete</button></td>
                                         </tr>
                                     );
 
@@ -149,19 +149,20 @@ function Subject() {
                 </div>
 
                 <div id='addSubjectBox'>
-                    <button onClick={handleAddSubject}>Add Subject</button>
+                    <button onClick={handleAddSubject} className="addBtn">Add Subject</button>
                 </div>
 
                 {/* Add Subject */}
 
 
-                <div id='addBox' style={display} >
-                    <label htmlFor="">Enter Subject </label>
+                <div className='addSubject' style={display}>
+                    <div>
+                        <label htmlFor="">Enter Subject </label>
+                    </div>
                     <input onChange={(e) => handleInput(e)} type="text" placeholder="Enter Subject name" />
-
                     <div id='buttonBox'>
-                        <button onClick={handleAddNewSubject}  >Add</button>
-                        <button onClick={handleCloseAdd} >Close</button>
+                        <button className="addBtn" onClick={handleAddNewSubject}  >Add</button>
+                        <button className="closeBtn" onClick={handleCloseAdd} >Close</button>
                     </div>
                 </div>
 
